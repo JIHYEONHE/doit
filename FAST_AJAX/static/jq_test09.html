@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>==전화깅==</title>
+<style type="text/css">
+#it {
+   width: 100px;
+   text-align: right;
+}
+table {
+   text-align: center;
+}
+</style>
+<script src="js/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+function mycall(){
+   var str_tel = $('#it').val();
+   alert("CALLING\n" + str_tel);
+   $('#it').val("");
+}
+
+function myclick(e){
+   var str_new = $(event.target).val();
+   var str_old = $('#it').val();
+   
+   $('#it').val(str_old + str_new);
+}
+
+
+
+$(document).ready(function(){
+   $("input[type=button][name=btn]").bind("click", function() {
+      myclick(event);
+    });
+   
+   $("#btn_call").bind("click", function() {
+      mycall();
+    });
+});
+</script>
+</head>
+<body>
+<table border="1px">
+   <tr>
+      <td colspan="3">
+         <input type="text" id="it" />
+      </td>
+   </tr>
+   <tr>
+      <td><input type="button" name="btn" value="1" /></td>
+      <td><input type="button" name="btn" value="2" /></td>
+      <td><input type="button" name="btn" value="3" /></td>
+   </tr>
+   <tr>
+      <td><input type="button" name="btn" value="4" /></td>
+      <td><input type="button" name="btn" value="5" /></td>
+      <td><input type="button" name="btn" value="6" /></td>
+   </tr>
+   <tr>
+      <td><input type="button" name="btn" value="7" /></td>
+      <td><input type="button" name="btn" value="8" /></td>
+      <td><input type="button" name="btn" value="9" /></td>
+   </tr>
+   <tr>
+      <td><input type="button" name="btn" value="0" /></td>
+      <td colspan="2">
+         <input type="button" id="btn_call" value="CALL" />
+      </td>
+   </tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function myclick(){
+	var obj = document.querySelector("#it"); //200의 문자열 가져오기
+	var a = obj.value; //200 값 가져오기
+	var aa = parseInt(a); //문자로 들어오기 때문에 숫자로 형변환
+	aa += 3; //3 더해주기 축적해야돼서 +=
+	obj.value = aa; //결과값을 obj의 value에 넣어줌
+}
+</script>
+</head>
+<body>
+
+<input type="text" id="it" value="200">
+<input type="button" value="plus3" onclick="myclick()" />
+
+</body>
+</html>

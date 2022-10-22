@@ -1,0 +1,21 @@
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+import pymysql
+
+#uvicorn myemp:app --reload
+
+app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/", response_class=HTMLResponse)
+@app.get("/emp_list", response_class=HTMLResponse)
+async def root(request: Request):
+    ed = EmpDao()
+    emps = ed.selects()
+    return templates.TemplateResponse("emp_list.html", {"request": request,"emps":emps})
+
+

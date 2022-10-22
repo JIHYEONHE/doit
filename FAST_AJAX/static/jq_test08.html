@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>===별===</title>
+<script src="js/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+function drawStar(cnt){
+   var ret = "";
+   for(var i=0; i<cnt; i++){
+      ret += "*";
+   }
+   ret += "<br>";
+   return ret;
+}
+function myclick(){
+   var rf = $('input[type=radio][name=rf]:checked').val();
+   var rl = $('input[type=radio][name=rl]:checked').val();
+   var txt = "";
+   
+   for(var i=rf; i<=rl; i++){
+      txt += drawStar(i);
+   }
+   
+   $('.mydisp').html(txt);
+}
+
+$(document).ready(function(){
+   $("#btn").bind("click", function() {
+      myclick();
+    });
+});
+</script>
+</head>
+<body>
+<table border="1px">
+   <tr>
+      <td>시작별수</td>
+      <td>
+         <input type="radio" name="rf" value="2" />2
+         <input type="radio" name="rf" value="3" />3
+         <input type="radio" name="rf" value="4" />4
+         <input type="radio" name="rf" value="5" />5
+      </td>
+   </tr>
+   <tr>
+      <td>끝별수</td>
+      <td>
+         <input type="radio" name="rl" value="6" />6
+         <input type="radio" name="rl" value="7" />7
+         <input type="radio" name="rl" value="8" />8
+         <input type="radio" name="rl" value="9" />9
+      </td>
+   </tr>
+   <tr>
+      <td colspan="2">
+         <input type="button" id="btn" value="별출력하기"  />
+      </td>
+   </tr>
+   <tr>
+      <td class="mydisp" colspan="2">
+         &nbsp;
+      </td>
+   </tr>
+   
+</table>
+</body>
+</html>

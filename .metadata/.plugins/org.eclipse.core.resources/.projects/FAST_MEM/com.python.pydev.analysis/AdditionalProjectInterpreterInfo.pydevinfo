@@ -1,0 +1,39 @@
+-- VERSION_5
+-- START DISKCACHE_3
+E:\workspace_python\.metadata\.plugins\org.eclipse.core.resources\.projects\FAST_MEM\com.python.pydev.analysis\v2_indexcache
+mymem|1665710389111462300|E:\workspace_python\FAST_MEM\mymem.py
+mem_dao|1665710378267861700|E:\workspace_python\FAST_MEM\mem_dao.py
+-- END DISKCACHE
+-- START DICTIONARY
+7
+2=mymem
+7=MemDao.__init__
+1=E:\workspace_python\FAST_MEM\mymem.py
+6=Mem
+4=mem_dao
+5=MemDao
+3=E:\workspace_python\FAST_MEM\mem_dao.py
+-- END DICTIONARY
+-- START TREE 1
+5
+app|1|app!1^15#1*19@
+cnt|1|cnt!3^72#5*35@
+ed|1|ed!3^71#5*35@
+mem|8|mem_selects!1^26#11*18@mem_update!1^44#11*18@mem_select!1^32#11*18@mem_delete!1^50#11*18@Mem!1^9#7*17@MemDao!3^2#7*33@mem_list!1^22#11*18@mem_insert!1^38#11*18@
+tem|1|templates!1^18#1*19@
+-- END TREE
+-- START TREE 2
+12
+__d|1|__del__!5&3^66#9*34@
+__i|1|__init__!5&3^4#9*34@
+arm|1|army_yn!6&1^13#5*19@
+con|1|conn!7&3^6#9*35@
+cur|1|curs!7&3^7#9*35@
+del|1|delete!5&3^56#9*34@
+ins|1|insert!5&3^31#9*34@
+m_n|1|m_name!6&1^11#5*19@
+m_s|1|m_seq!6&1^10#5*19@
+sel|2|select!5&3^15#9*34@selects!5&3^9#9*34@
+tel|1|tel!6&1^12#5*19@
+upd|1|update!5&3^42#9*34@
+-- END TREE

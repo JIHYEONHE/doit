@@ -1,0 +1,35 @@
+-- VERSION_5
+-- START DISKCACHE_3
+E:\workspace_python\.metadata\.plugins\org.eclipse.core.resources\.projects\FAST_EMP\com.python.pydev.analysis\v2_indexcache
+myemp|1665447584958404200|E:\workspace_python\FAST_EMP\myemp.py
+emp_dao|1665109195479043000|E:\workspace_python\FAST_EMP\emp_dao.py
+-- END DISKCACHE
+-- START DICTIONARY
+6
+2=myemp
+3=E:\workspace_python\FAST_EMP\emp_dao.py
+4=emp_dao
+5=EmpDao
+6=EmpDao.__init__
+1=E:\workspace_python\FAST_EMP\myemp.py
+-- END DICTIONARY
+-- START TREE 1
+6
+app|1|app!1^10#1*19@
+cnt|1|cnt!3^72#5*35@
+ed|1|ed!3^71#5*35@
+emp|7|emp_mod_act!1^35#11*18@emp_add!1^41#11*18@emp_detail!1^23#11*18@emp_add_act!1^45#11*18@emp_del_act!1^51#11*18@EmpDao!3^2#7*33@emp_mod!1^29#11*18@
+roo|1|root!1^17#11*18@
+tem|1|templates!1^13#1*19@
+-- END TREE
+-- START TREE 2
+8
+__d|1|__del__!5&3^66#9*34@
+__i|1|__init__!5&3^4#9*34@
+con|1|conn!6&3^6#9*35@
+cur|1|curs!6&3^7#9*35@
+del|1|delete!5&3^56#9*34@
+ins|1|insert!5&3^31#9*34@
+sel|2|select!5&3^15#9*34@selects!5&3^9#9*34@
+upd|1|update!5&3^42#9*34@
+-- END TREE

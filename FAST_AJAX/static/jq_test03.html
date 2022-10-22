@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>!!!계산기!!!</title>
+<script src="js/jquery-3.6.1.js"></script>
+<style type="text/css">
+.myit{
+	width:20px
+}
+</style>
+<script type="text/javascript">
+
+
+function myplus(){
+	var obj1 = $("#it1").val();
+	var obj2 = $("#it2").val();
+	
+	var aa = parseInt(obj1);
+	var bb = parseInt(obj2);
+	
+	var cc = aa+bb;
+	$("#it3").val(cc);
+}
+
+function myminus(){
+	var obj1 = $("#it1").val();
+	var obj2 = $("#it2").val();
+	
+	var aa = parseInt(obj1);
+	var bb = parseInt(obj2);
+	var cc = aa-bb;
+	$("#it3").val(cc);
+}
+function mymultiply(){
+	var obj1 = $("#it1").val();
+	var obj2 = $("#it2").val();
+	
+	var aa = parseInt(obj1);
+	var bb = parseInt(obj2);
+	var cc = aa*bb;
+	$("#it3").val(cc);
+}
+function mydivide(){
+	var obj1 = $("#it1").val();
+	var obj2 = $("#it2").val();
+	
+	var aa = parseInt(obj1);
+	var bb = parseInt(obj2);
+	var cc = aa/bb;
+	$("#it3").val(cc);
+}
+$(document).ready(function(){
+    $("#btn_plus").bind("click", function() {
+        myplus();
+    });
+    $("#btn_minus").bind("click", function() {
+        myminus();
+    });
+    $("#btn_multiply").bind("click", function() {
+    	mymultiply();
+    });
+    $("#btn_divide").bind("click", function() {
+    	mydivide();
+    });
+    
+});
+
+</script>
+</head>
+<body>
+<table border="1px">
+<tr>
+	<td>
+		<input type="text" class="myit" id="it1" />
+	</td>
+	<td>
+		<input type="button" value="plus" id="btn_plus" /><br/>
+		<input type="button" value="minus" id="btn_minus" /><br/>
+		<input type="button" value="multiply" id="btn_multiply" /><br/>
+		<input type="button" value="divide" id="btn_divide" /><br/>
+	</td>	
+	<td>
+		<input type="text" class="myit" id="it2" />
+	</td>
+	<td>
+		=
+	</td>
+	<td>
+		<input type="text" class="myit" id="it3" />
+	</td>
+	
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ .filp {
+}
+
+</style>
+<script type="text/javascript">
+var flag_ing = true; //flag는 boolean형의 변수명으로 많이 사용함
+var s1i = -1; //첫번째로 열리는 카드의 [i,j]
+var s1j = -1; //첫번째로 열리는 카드의 [i,j]
+var s1v = -1; //value(열리고 닫힐지 지정할 값)
+var s2i = -1;
+var s2j = -1;
+var s2v = -1;
+var step=0;
+
+var img2D = [ //이미지 저장된거
+   [1,1,2,2],
+   [3,3,4,4],
+   [5,5,6,6],
+   [7,7,8,8]
+];
+
+var cvr2D = [ //1앞 0 뒤 /뒷면 앞면 정하는거 
+   [0,0,0,0],
+   [0,0,0,0],
+   [0,0,0,0],
+   [0,0,0,0]
+]
+
+var dsp2D = [ //보여주는거 cvr2D가 1이면 img2D에서 이미지를 가지고옴
+	[0,0,0,0],
+	[0,0,0,0],
+	[0,0,0,0],
+	[0,0,0,0]
+];
+
+
+
+function myinit(){
+   patchIJEvent();
+}
+
+function setDsp2D(){
+	for(var i=0; i<4; i++){
+      for(var j=0; j<4; j++){
+		if(cvr2D[i][j]==1){
+			dsp2D[i][j]=img2D[i][j];
+		}else{
+			dsp2D[i][j]=0;	
+		}
+      }
+   }
+	if(step==0){
+		dsp2D[s1i][s1j]=s1v;
+	}
+	if(step==1){
+		dsp2D[s1i][s1j]=s1v;
+		dsp2D[s2i][s2j]=s2v;
+	}	
+}
+
+function myclick(e){
+	
+	if(!flag_ing){ //!flag_ing 랑 flag_ing==false 같은것
+		alert("게임끝났다니까?너어는 정말?!!!!");
+		return;
+	}
+	
+	if(step==2){
+		return;
+	}
+	var arr_ij = e.target.alt.split(",");
+	var i = parseInt(arr_ij[0]);
+	var j = parseInt(arr_ij[1]);
+	console.log(i,j);
+	
+	if(step==0){
+		s1i=i;
+		s1j=j;
+		s1v=img2D[i][j];
+	}
+	if(step==1){
+		if(s1i==i&&s1j==j){
+			return;
+		}
+		s2i = i;
+		s2j = j;
+		s2v =img2D[i][j];
+	}
+	
+	setDsp2D();
+	render();
+	nextStep();
+	console.log("step",step);
+	if(step==2){
+		setTimeout(gostep3, 500); //카드 두장까고 나서 0.5초줌
+		minus2();
+	}
+}
+
+function gostep3(){
+	if(s1v==s2v){
+		cvr2D[s1i][s1j]=1;
+		cvr2D[s2i][s2j]=1;
+	}
+	setDsp2D();
+	render();
+	
+	var cnt_final=0;
+	for(var i=0; i<4; i++){
+	   for(var j=0; j<4; j++){
+	      if(cvr2D[i][j]==1){
+	    	  cnt_final++;
+	      }
+	   }
+	 }
+	if(cnt_final==16){
+	   alert("당신이 이겼습니다!");
+	   flag_ing=false;
+	 }
+	
+	
+	s1i = -1; //첫번째로 열리는 카드의 [i,]
+	s1j = -1; //첫번째로 열리는 카드의 [,j]
+	s1v = -1; //value(열리고 닫힐지 지정할 값)
+	s2i = -1;
+	s2j = -1;
+	s2v = -1;
+
+	nextStep();
+	console.log("babo");
+	console.log(cvr2D);
+}
+
+function nextStep(){
+	if(step==0){
+		step=1;
+	}else if(step==1){
+		step=2;
+	}else{
+		step=0;
+	}
+}
+
+function patchIJEvent(){
+   for(var i=0; i<4; i++){
+      for(var j=0; j<4; j++){
+    	  var im=document.querySelectorAll('img')[i*4+j];
+    	  //console.log(im);
+    	  im.setAttribute('alt',i+','+j);
+      }
+   }
+   for(var i=0;i<16;i++){
+   document.querySelectorAll('img')[i].addEventListener('click');
+   //$('img').bind('click',function(event) {myclick(event);});
+   }
+}   
+
+function shuffle(){
+   for(var i=0; i<100; i++){
+      var rndi = parseInt(Math.random()*4);
+      var rndj = parseInt(Math.random()*4);
+      var a = img2D[rndi][rndj];
+      var b = img2D[0][0];
+      img2D[0][0] = a;
+      img2D[rndi][rndj] = b;
+      
+   }
+   
+   console.log(img2D);
+}
+
+
+
+function render(){
+   for(var i=0; i<4; i++){
+      for(var j=0; j<4; j++){
+    	  //img_src = '../public/img/'+ i + '_title.png'; 
+    	   //$('img').eq(i*4 + j).attr('src','static/img/' + dsp2D[i][j] + '.png').css('border','2px solid pink');
+         }
+      }
+}          
+
+function minus2(){
+	var lfOver=14;
+	 for(var i=0; i<4; i++){
+     	 for(var j=0; j<4; j++){
+			if(cvr2D[i][j]==1){
+				lfOver--;
+			}
+     	 }
+    }
+	 
+	 var element = document.getElementById('mydisp');
+	 element.innerText = lfOver;
+
+}
+
+</script>
+</head>
+<body onload="myinit()">
+<table>
+	<tr>
+		<td>남은 갯수</td>
+		<td>
+			<div id="mydisp">16</div>
+		</td>
+	</tr>
+</table>
+<div class="filp">
+   <table>
+      <tr>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+      </tr>
+      <tr>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+      </tr>
+      <tr>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+      </tr>
+      <tr>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+         <td><img src="static/img/0.png"></td>
+      </tr>
+   </table>
+</div>
+</body>
+</html>

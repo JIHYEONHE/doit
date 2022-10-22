@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>===구구단===</title>
+<script src="js/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+//구구단
+function myclick(){
+	var dan = $("#mysel").val();
+	var idan = parseInt(dan);
+	
+	var txt = "";
+	txt += idan+"*"+1+"="+(idan*1)+"\n";  //txt에 누적
+	txt += idan+"*"+2+"="+(idan*2)+"\n"; 
+	txt += idan+"*"+3+"="+(idan*3)+"\n"; 
+	txt += idan+"*"+4+"="+(idan*4)+"\n"; 
+	txt += idan+"*"+5+"="+(idan*5)+"\n"; 
+	txt += idan+"*"+6+"="+(idan*6)+"\n"; 
+	txt += idan+"*"+7+"="+(idan*7)+"\n"; 
+	txt += idan+"*"+8+"="+(idan*8)+"\n"; 
+	txt += idan+"*"+9+"="+(idan*9)+"\n"; 
+	
+	$("#myta").val(txt);
+}
+$(document).ready(function(){
+    $("#btn").bind("click", function() {
+        myclick();
+    });
+});
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>출력단수</td>
+		<td>
+			<select id="mysel">
+				<option value="2">2단</option>
+				<option value="3">3단</option>
+				<option value="4">4단</option>
+				<option value="5">5단</option>
+				<option value="6">6단</option>
+				<option value="7">7단</option>
+				<option value="8">8단</option>
+				<option value="9">9단</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" id="btn" value="구구단 출력하기"  />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<textarea id="myta" rows="20" cols="20"></textarea>
+		</td>
+	</tr>
+	
+</table>
+</body>
+</html>

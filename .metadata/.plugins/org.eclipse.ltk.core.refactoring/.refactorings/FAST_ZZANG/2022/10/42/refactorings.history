@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FAST_ZZANG/templates/mem.html&apos; to &apos;zzang.html&apos;" description="Rename resource &apos;mem.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="templates/mem.html" name="zzang.html" stamp="1665713370570" updateReferences="true"/>
+</session>

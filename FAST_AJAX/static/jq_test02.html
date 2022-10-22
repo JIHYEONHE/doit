@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3을 더해 봅시댜아</title>
+<script src="js/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+function myclick(){
+	var a = $("#it").val();
+	var aa = parseInt(a);
+	aa += 3; //3 더해주기 축적해야돼서 +=
+	$("#it").val(aa);
+}
+$(document).ready(function(){
+        $("#btn").bind("click", function() {
+            myclick();
+        });
+});
+</script>
+</head>
+<body>
+
+<input type="text" id="it" value="200">
+<input type="button" id="btn" value="plus3" />
+
+</body>
+</html>

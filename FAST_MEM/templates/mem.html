@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MEM</title>
+<style type="text/css">
+body {
+   margin: 0;
+   background-image: url('/static/js/back1.jpg');
+   color: white;
+}
+*{
+	background-color:pink;
+   font-family: IBM Plex mono;
+   font-size: 1.2rem;
+}
+a {
+   text-decoration: none;
+   color: yellow;
+}
+.sort {
+   display:flex;
+   justify-content: center;
+}
+.btn {
+   display:flex;
+   justify-content: space-around;
+   width: 300px;
+   padding-left: 50px;
+}
+.bt {
+   background-color: bisque;
+   cursor: pointer;
+}
+.bt:hover {
+   transform: scale(1.5);
+   background-color: yellow;
+}
+.aa {
+	font-size:1rem;
+   margin-right: 20px;
+   margin-bottom: 20px;
+   color: yellow;
+}
+.bb{
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   height:40vh;
+}
+.cc {
+   border: 20px groove beige; 
+   width: 370px;
+   padding: 15px;
+   height: 250px;
+}
+.tb {
+   border-color: white;
+}
+input {
+	background-color:white;
+   border-radius: 20px;
+   text-align: center;
+}
+thead {
+   color: white;
+}
+</style>
+<script src="static/js/jquery-3.6.1.js"></script> <!-- ajax가져오는법 -->
+<script type="text/javascript">
+$(document).ready(function () {
+	fn_list();   
+});
+
+function fn_list(){
+    $.ajax({
+        url: "mem_selects",
+        type: "get",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(data) {
+        	var mems = data;
+        	
+        	var txt="";
+        	
+        	for(var i=0;i<mems.length;i++){
+	        	var mem = mems[i];
+        		txt += `
+		        	<tr>
+		    			<td><a href="javascript:fn_one('${mem.m_seq}')">${mem.m_seq}</a></td>
+		    			<td>${mem.m_name}</td>
+		    			<td>${mem.tel}</td>
+		    			<td>${mem.army_yn}</td>
+		    		</tr>
+	        	`;
+        	}        	
+        	$("#mytbody").html(txt);
+        }
+    });  
+}
+
+
+function fn_one(m_seq){
+	var params = JSON.stringify({
+		'm_seq':m_seq
+	});
+	
+	 $.ajax({
+	        url: "mem_select",
+	        type: "post",
+	        data:params,
+	        dataType: "json",
+	        contentType: "application/json",
+	        success: function(data) {
+	        	var mem = data;
+				$("#m_seq").val(mem.m_seq);	        	
+				$("#m_name").val(mem.m_name);	        	
+				$("#tel").val(mem.tel);	        	
+				$("#army_yn").val(mem.army_yn);	        	
+	        }
+	    });    
+}
+
+function fn_insert(){
+	
+	var params = JSON.stringify({
+		'm_seq':$("#m_seq").val(),
+		'm_name':$("#m_name").val(),
+		'tel':$("#tel").val(),
+		'army_yn':$("#army_yn").val(),
+	});
+	
+	 $.ajax({
+	        url: "mem_insert",
+	        type: "post",
+	        data:params,
+	        dataType: "json",
+	        contentType: "application/json",
+	        success: function(data) {
+			console.log(data);        	
+			var cnt = data;
+			if(cnt == 1){
+				fn_list(); 
+				$("#m_seq").val("");
+				$("#m_name").val("");
+				$("#tel").val("");
+				$("#army_yn").val("");
+			}else{
+				alert("추가도중 문제가 발생하였습니다.");
+			}
+	     }
+	 });    
+}
+
+function fn_update(){
+	
+	var params = JSON.stringify({
+		'm_seq':$("#m_seq").val(),
+		'm_name':$("#m_name").val(),
+		'tel':$("#tel").val(),
+		'army_yn':$("#army_yn").val(),
+	});
+	
+	 $.ajax({
+	        url: "mem_update",
+	        type: "post",
+	        data:params,
+	        dataType: "json",
+	        contentType: "application/json",
+	        success: function(data) {
+	        	var mem = data;
+			console.log(data);        	
+			var cnt = data;
+			if(cnt == 1){
+				fn_list(); 
+				$("#m_seq").val("");
+				$("#m_name").val("");
+				$("#tel").val("");
+				$("#army_yn").val("");
+			}else{
+				alert("수정 도중 문제가 발생하였습니다.");
+			}
+	     }
+	 });    
+}
+
+function fn_delete(){
+	
+	var params = JSON.stringify({
+		'm_seq':$("#m_seq").val()
+	});
+	
+	 $.ajax({
+	        url: "mem_delete",
+	        type: "post",
+	        data:params,
+	        dataType: "json",
+	        contentType: "application/json",
+	        success: function(data) {
+	        	var cnt = data;
+			console.log(data);        	
+			if(cnt == 1){
+				fn_list(); 
+				$("#m_seq").val("");
+				$("#m_name").val("");
+				$("#tel").val("");
+				$("#army_yn").val("");
+			}else{
+				alert("삭제 도중 문제가 발생하였습니다.");
+			}
+	     }
+	 });    
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="bb">
+     <table class="tb" border="1px" style="width:30vw;text-align:center;">
+        <thead>
+             <tr>
+              <td>순서</td>
+              <td>이름</td>
+              <td>전화</td>
+              <td>군필</td>
+           </tr>
+        </thead>
+        <tbody id="mytbody">
+          <tr>
+             <td>1</td>
+             <td>1</td>
+             <td>1</td>
+             <td>1</td>
+          </tr>
+       </tbody>
+    </table>
+</div>
+    <br>
+    
+<div class="bb">
+    <div class="cc">
+       <div class="sort">
+          <div class="aa">순서</div>
+          <div>
+             <input type="text" id="m_seq" />
+          </div>
+       </div>
+       <div class="sort">
+          <div class="aa">이름</div>
+          <div>
+             <input type="text" id="m_name" />
+          </div>
+       </div>
+       <div class="sort">
+          <div class="aa">전화</div>
+          <div>
+             <input type="text" id="tel" />
+          </div>
+       </div>
+       <div class="sort">
+          <div class="aa">군필</div>
+          <div>
+             <input type="text" id="army_yn" />
+          </div>
+       </div>
+       <div>
+          <div class="btn">
+             <input type="button" class="bt" value="추가" onclick="fn_insert()"/>
+             <input type="button" class="bt" value="수정" onclick="fn_update()"/>
+             <input type="button" class="bt" value="삭제" onclick="fn_delete()"/>
+          </div>
+       </div>
+    </div>
+</div>
+</body>
+
+</body>
+</html>

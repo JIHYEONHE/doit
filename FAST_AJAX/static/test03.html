@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.myit{
+	width:20px
+}
+</style>
+<script type="text/javascript">
+function myplus(){
+	var obj1 = document.querySelector("#it1"); //첫번째 빈칸
+	var obj2 = document.querySelector("#it2");
+	var obj3 = document.querySelector("#it3");
+	var aa = parseInt(obj1.value);
+	var bb = parseInt(obj2.value);
+	obj3.value = aa+bb;
+}
+
+function myminus(){
+	var obj1 = document.querySelector("#it1"); //첫번째 빈칸
+	var obj2 = document.querySelector("#it2");
+	var obj3 = document.querySelector("#it3");
+	var aa = parseInt(obj1.value);
+	var bb = parseInt(obj2.value);
+	obj3.value = aa-bb;
+}
+function mymultiply(){
+	var obj1 = document.querySelector("#it1"); //첫번째 빈칸
+	var obj2 = document.querySelector("#it2");
+	var obj3 = document.querySelector("#it3");
+	var aa = parseInt(obj1.value);
+	var bb = parseInt(obj2.value);
+	obj3.value = aa*bb;
+}
+function mydivide(){
+	var obj1 = document.querySelector("#it1"); //첫번째 빈칸
+	var obj2 = document.querySelector("#it2");
+	var obj3 = document.querySelector("#it3");
+	var aa = parseInt(obj1.value);
+	var bb = parseInt(obj2.value);
+	obj3.value = aa/bb;
+}
+</script>
+</head>
+<body>
+<table border="1px">
+<tr>
+	<td>
+		<input type="text" class="myit" id="it1" />
+	</td>
+	<td>
+		<input type="button" value="plus" onclick="myplus()" /><br/>
+		<input type="button" value="minus" onclick="myminus()" /><br/>
+		<input type="button" value="multiply" onclick="mymultiply()" /><br/>
+		<input type="button" value="divide" onclick="mydivide()" /><br/>
+	</td>	
+	<td>
+		<input type="text" class="myit" id="it2" />
+	</td>
+	<td>
+		=
+	</td>
+	<td>
+		<input type="text" class="myit" id="it3" />
+	</td>
+	
+</tr>
+</table>
+</body>
+</html>

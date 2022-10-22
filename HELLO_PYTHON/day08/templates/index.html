@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<P>{{str}}</P>
+	{% for i in arr %}
+	<P>{{i}}</P>
+	{% endfor %}
+	
+	
+	
+	
+	<!--<p>{{emps}}</p>-->
+	
+	<table border="1" style="width:30vw;text-align:center">
+		<tr>
+			<th>사번</th>
+			<th>이름</th>
+			<th>성별</th>
+			<th>주소</th>
+		</tr>
+{% for emp in emps %}
+		<tr>
+			<td>{{emp.e_id}}</td>
+			<td>{{emp.e_name}}</td>
+			<td>{{emp.sex}}</td>
+			<td>{{emp.addr}}</td>
+		</tr>
+{% endfor %}
+	</table>
+	
+	    <table border="1" style="width:30vw;text-align:center">
+          <tr>
+            <th>사번</th>
+            <th>이름</th>
+            <th>성별</th>
+            <th>주소</th>
+        </tr>
+        {% for row in rows %}
+       <tr>
+          <td>{{row.e_id}}</td>
+          <td>{{row.e_name}}</td>
+          <td>{{row.sex}}</td>
+          <td>{{row.addr}}</td>
+       </tr>
+       {% endfor %}
+    </table>
+	
+	
+	<p>{{rows}}</p>
+</body>
+</html>

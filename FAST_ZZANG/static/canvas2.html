@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// arc(x, y, radius, startAngle, endAngle, clockwise)
+function myinit(){
+//	https://curryyou.tistory.com/m/325
+//  1. '선'만으로 이루어진 사각형 그리기
+// 	1) 선색 설정:  ctx.strokeStyle = '선 색상' 
+// 	2) 선으로 사각형 그리기:  ctx.strokeRect(x좌표, y좌표, 가로, 세로) 
+
+// 	2. '색'으로 채워진 사각형 그리기
+// 	1) 내부 색상 설정 :  ctx.fillStyle = '내부 색상'; 
+// 	2) 사각형 그리기:  ctx.fillRect(x좌표, y좌표, 가로, 세로); 
+
+    const canvas = document.getElementById('mycan');
+
+    // 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
+    const ctx = canvas.getContext("2d");
+
+    // 3. '선' 사각형 그리기
+    ctx.strokeStyle = 'blue';
+    ctx.strokeRect(10, 10, 100, 100);
+
+    // 4. '색' 사각형 그리기
+    ctx.fillStyle = 'pink';
+    ctx.fillRect(10, 150, 100, 100);
+
+    // 5. '선+색' 사각형 그리기
+    ctx.strokeRect(10, 300, 100, 100);
+    ctx.fillRect(10, 300, 100, 100);
+
+    // 6. 사각형 모양으로 지우기
+    ctx.fillRect(10, 450, 100, 100); // 먼저 '색' 사각형을 그리고,
+    ctx.clearRect(20, 500, 100, 100); // 일부 영역을 지운다.
+}
+</script>
+</head>
+<body onload="myinit()">
+
+<canvas id="mycan" width="400px" height="400px">
+
+</canvas>
+
+</body>
+</html>

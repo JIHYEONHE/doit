@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var str ="1,0,1,0,1,1,1,0,0,0,0,1,1,1,0,0";
+var str_s = str.split(',');
+console.log(str_s);
+
+function myinit(){
+    const c = document.getElementById('mycan');
+    // 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
+    const ctx = c.getContext("2d");
+    
+    for(var i=0; i<4; i++){ //i는 세로 y
+		for(var j=0; j<4; j++){ //j 가로 x
+		    if(strs[i][j]==1){	    	
+			    ctx.fillStyle = 'yellow';
+		    }else{
+		        ctx.fillStyle = 'black';		        
+		    }
+		    ctx.fillRect(j*51, i*51, 50, 50);
+		}
+	}
+    
+    
+//  for(var i=0;i<4; i++){
+//  for(var j=0; j<4; j++){
+//     img2D[i][j] = arr16[i*4 +j];
+//  }
+//}
+
+}
+
+</script>
+</head>
+<body onload="myinit()">
+
+<canvas id="mycan" width="400px" height="400px">
+
+</canvas>
+
+</body>
+</html>
